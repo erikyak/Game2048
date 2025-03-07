@@ -42,4 +42,4 @@
 - **Методы:**
   - `Awake` – берет все `CellNumber` в папке `Resources` и добавляет в статический список `cellNumbers`
 
-/details>
+</details>
