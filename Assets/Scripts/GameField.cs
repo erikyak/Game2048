@@ -12,7 +12,7 @@ public class GameField : MonoBehaviour {
 
     public void Start()
     {
-        CreateCell();
+        InvokeRepeating(nameof(CreateCell), 0f, 1f);
     }
 
     public Vector2Int GetEmptyPosition() {
