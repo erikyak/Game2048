@@ -5,10 +5,11 @@ using UnityEngine;
 public class Cell {
     public Vector2Int Position { get; private set; }
     public CellNumber CellDescription { get; private set; }
+
+    public CellView CellView { get; set; }
     
-    
-    public event Action<Cell> OnValueChanged;
-    public event Action<Cell> OnPositionChanged;
+    public event Action<int> OnValueChanged;
+    public event Action<Vector2Int, Vector2Int> OnPositionChanged;
 
     public Cell(Vector2Int startPosition, int initialValue) {
         Position = startPosition;
@@ -19,15 +20,17 @@ public class Cell {
         if (CellDescription.number != newValue)
         {
             CellDescription = CellNumber.cellNumbers.First(cell => cell.number == newValue);
-            OnValueChanged?.Invoke(this);
+            OnValueChanged?.Invoke(newValue);
         }
     }
 
     // Изменение позиции клетки с вызовом события
-    public void SetPosition(Vector2Int newPosition) {
+    public void SetPosition(Vector2Int newPosition, bool telepot) {
         if (Position != newPosition) {
+            if(telepot) OnPositionChanged?.Invoke(Vector2Int.left, newPosition);
+            else OnPositionChanged?.Invoke(Position, newPosition);
             Position = newPosition;
-            OnPositionChanged?.Invoke(this);
+            
         }
     }
 }

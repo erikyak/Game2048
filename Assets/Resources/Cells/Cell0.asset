@@ -10,8 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9ec2538fc77c42139bed92ba06752a79, type: 3}
-  m_Name: Cell1024
+  m_Name: Cell0
   m_EditorClassIdentifier: 
-  number: 1024
-  color: {r: 1, g: 0.9098039, b: 0.11372549, a: 1}
-  textColor: {r: 0.735849, g: 0.735849, b: 0.735849, a: 1}
+  number: 0
+  color: {r: 0, g: 0, b: 0, a: 0}

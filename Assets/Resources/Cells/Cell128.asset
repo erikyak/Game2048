@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 128
   color: {r: 1, g: 0.92156863, b: 0.44313726, a: 1}
-  fontSize: 80
+  textColor: {r: 0.735849, g: 0.735849, b: 0.735849, a: 1}

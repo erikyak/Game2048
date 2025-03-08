@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Cell8
   m_EditorClassIdentifier: 
   number: 8
-  color: {r: 1, g: 0.6666667, b: 0.24313726, a: 1}
-  fontSize: 120
+  color: {r: 1, g: 0.67058825, b: 0.24313726, a: 1}
+  textColor: {r: 0.5283019, g: 0.5283019, b: 0.5283019, a: 1}
