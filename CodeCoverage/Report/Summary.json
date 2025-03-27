@@ -1,0 +1,34 @@
+{
+  "summary": {
+    "generatedon": "2025-03-27T01:17:44Z",
+    "parser": "MultiReportParser (4x OpenCoverParser)",
+    "assemblies": 1,
+    "classes": 11,
+    "files": 11,
+    "coveredlines": 438,
+    "uncoveredlines": 41,
+    "coverablelines": 479,
+    "totallines": 751,
+    "linecoverage": 91.4,
+    "coveredbranches": 0,
+    "totalbranches": 0,
+    "coveredmethods": 51,
+    "totalmethods": 56,
+    "methodcoverage": 91
+ },
+  "coverage": {
+    "assemblies": [
+      { "name": "Scripts", "classes": 11, "coverage": 91.4, "coveredlines": 438, "coverablelines": 479, "totallines": 751, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 91, "coveredmethods": 51, "totalmethods": 56, "classesinassembly": [
+        { "name": "Cell", "coverage": 100, "coveredlines": 21, "coverablelines": 21, "totallines": 36, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 100, "coveredmethods": 9, "totalmethods": 9 },
+        { "name": "CellData", "coverage": 100, "coveredlines": 6, "coverablelines": 6, "totallines": 17, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 100, "coveredmethods": 1, "totalmethods": 1 },
+        { "name": "CellNumber", "coverage": 100, "coveredlines": 1, "coverablelines": 1, "totallines": 13, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 100, "coveredmethods": 1, "totalmethods": 1 },
+        { "name": "CellNumberLoader", "coverage": 100, "coveredlines": 8, "coverablelines": 8, "totallines": 14, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 100, "coveredmethods": 1, "totalmethods": 1 },
+        { "name": "CellView", "coverage": 98.4, "coveredlines": 63, "coverablelines": 64, "totallines": 92, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 100, "coveredmethods": 6, "totalmethods": 6 },
+        { "name": "GameField", "coverage": 93.9, "coveredlines": 62, "coverablelines": 66, "totallines": 104, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 100, "coveredmethods": 8, "totalmethods": 8 },
+        { "name": "GameManager", "coverage": 92.8, "coveredlines": 196, "coverablelines": 211, "totallines": 289, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 92.3, "coveredmethods": 12, "totalmethods": 13 },
+        { "name": "GizmosWrapper", "coverage": 100, "coveredlines": 4, "coverablelines": 4, "totallines": 12, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 100, "coveredmethods": 2, "totalmethods": 2 },
+        { "name": "InputHandler", "coverage": 86, "coveredlines": 43, "coverablelines": 50, "totallines": 79, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 75, "coveredmethods": 6, "totalmethods": 8 },
+        { "name": "PlusScore", "coverage": 79.3, "coveredlines": 23, "coverablelines": 29, "totallines": 51, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 100, "coveredmethods": 3, "totalmethods": 3 },
+        { "name": "RestartProcess", "coverage": 57.8, "coveredlines": 11, "coverablelines": 19, "totallines": 44, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 50, "coveredmethods": 2, "totalmethods": 4 } ] } ]
+  }
+}

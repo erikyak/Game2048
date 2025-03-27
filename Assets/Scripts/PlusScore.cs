@@ -6,12 +6,12 @@ using UnityEngine;
 public class PlusScore:MonoBehaviour
 {
     public GameObject plusScoreUI;
-    private void Start()
+    public void Start()
     {
         GameManager.Instance.OnScoreChanged += ChangeScore;
     }
 
-    private void ChangeScore(int score)
+    public void ChangeScore(int score)
     {
         GameObject plusScoreGO = Instantiate(plusScoreUI, transform);
         plusScoreGO.GetComponent<TextMeshProUGUI>().text = $"+{score.ToString()}";
@@ -39,7 +39,13 @@ public class PlusScore:MonoBehaviour
         
         scoreObject.transform.position = targetPos;
         textComp.color = targetColor;
-        
-        Destroy(scoreObject);
+#if UNITY_EDITOR
+        if (!Application.isPlaying)
+            DestroyImmediate(scoreObject);
+        else
+            Destroy(scoreObject);
+#else
+    Destroy(scoreObject);
+#endif
     }
 }

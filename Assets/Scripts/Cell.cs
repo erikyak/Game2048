@@ -13,13 +13,13 @@ public class Cell {
 
     public Cell(Vector2Int startPosition, int initialValue) {
         Position = startPosition;
-        CellDescription = CellNumber.cellNumbers.First(cell => cell.number == initialValue);
+        CellDescription = CellNumber.cellNumbers.FirstOrDefault(cell => cell.number == initialValue);
     }
 
     public void SetValue(int newValue) {
         if (CellDescription.number != newValue)
         {
-            CellDescription = CellNumber.cellNumbers.First(cell => cell.number == newValue);
+            CellDescription = CellNumber.cellNumbers.FirstOrDefault(cell => cell.number == newValue);
             OnValueChanged?.Invoke(newValue);
         }
     }

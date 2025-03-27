@@ -24,10 +24,9 @@ public class InputHandler : MonoBehaviour
     {
         Vector2 direction = Pointer.current.position.ReadValue() - pointerStartPosition;
         ProcessSwipe(direction);
-        
     }
     
-    private void ProcessSwipe(Vector2 direction)
+    public void ProcessSwipe(Vector2 direction)
     {
         if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
         {

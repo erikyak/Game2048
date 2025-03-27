@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CoverageReport scope="Summary">
+  <Summary>
+    <Generatedon>3/27/2025 - 4:17:44 AM</Generatedon>
+    <Parser>MultiReportParser (4x OpenCoverParser)</Parser>
+    <Assemblies>1</Assemblies>
+    <Classes>11</Classes>
+    <Files>11</Files>
+    <Coveredlines>438</Coveredlines>
+    <Uncoveredlines>41</Uncoveredlines>
+    <Coverablelines>479</Coverablelines>
+    <Totallines>751</Totallines>
+    <Linecoverage>91.4</Linecoverage>
+    <Coveredbranches>0</Coveredbranches>
+    <Totalbranches>0</Totalbranches>
+    <Coveredmethods>51</Coveredmethods>
+    <Totalmethods>56</Totalmethods>
+    <Methodcoverage>91</Methodcoverage>
+  </Summary>
+  <Coverage>
+    <Assembly name="Scripts" classes="11" coverage="91.4" coveredlines="438" coverablelines="479" totallines="751" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="51" totalmethods="56" methodcoverage="91">
+      <Class name="Cell" coverage="100" coveredlines="21" coverablelines="21" totallines="36" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="9" totalmethods="9" methodcoverage="100" />
+      <Class name="CellData" coverage="100" coveredlines="6" coverablelines="6" totallines="17" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="1" totalmethods="1" methodcoverage="100" />
+      <Class name="CellNumber" coverage="100" coveredlines="1" coverablelines="1" totallines="13" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="1" totalmethods="1" methodcoverage="100" />
+      <Class name="CellNumberLoader" coverage="100" coveredlines="8" coverablelines="8" totallines="14" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="1" totalmethods="1" methodcoverage="100" />
+      <Class name="CellView" coverage="98.4" coveredlines="63" coverablelines="64" totallines="92" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="6" totalmethods="6" methodcoverage="100" />
+      <Class name="GameField" coverage="93.9" coveredlines="62" coverablelines="66" totallines="104" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="8" totalmethods="8" methodcoverage="100" />
+      <Class name="GameManager" coverage="92.8" coveredlines="196" coverablelines="211" totallines="289" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="12" totalmethods="13" methodcoverage="92.3" />
+      <Class name="GizmosWrapper" coverage="100" coveredlines="4" coverablelines="4" totallines="12" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="2" totalmethods="2" methodcoverage="100" />
+      <Class name="InputHandler" coverage="86" coveredlines="43" coverablelines="50" totallines="79" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="6" totalmethods="8" methodcoverage="75" />
+      <Class name="PlusScore" coverage="79.3" coveredlines="23" coverablelines="29" totallines="51" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="3" totalmethods="3" methodcoverage="100" />
+      <Class name="RestartProcess" coverage="57.8" coveredlines="11" coverablelines="19" totallines="44" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="2" totalmethods="4" methodcoverage="50" />
+    </Assembly>
+  </Coverage>
+</CoverageReport>

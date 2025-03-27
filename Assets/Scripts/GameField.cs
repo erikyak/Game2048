@@ -13,7 +13,7 @@ public class GameField : MonoBehaviour {
     
     [NonSerialized] public Cell[,] cellGrid;
 
-    private void Awake()
+    public void Awake()
     {
         cellGrid = new Cell[rows,columns];
     }
@@ -46,8 +46,16 @@ public class GameField : MonoBehaviour {
     public void RemoveCell(Cell cell)
     {
         cellGrid[cell.Position.x, cell.Position.y] = null;
-        Destroy(cell.CellView.gameObject);
+#if UNITY_EDITOR
+        if (!Application.isPlaying)
+            DestroyImmediate(cell.CellView.gameObject);
+        else
+            Destroy(cell.CellView.gameObject);
+#else
+    Destroy(cell.CellView.gameObject);
+#endif
     }
+
     public void CreateInRandomPosition()
     {
         Vector2Int pos = GetEmptyPosition();
@@ -79,22 +87,16 @@ public class GameField : MonoBehaviour {
     {
         if (cellGrid == null)
             return;
-
-        // Задаем цвет для отрисовки заполненных клеток
         Gizmos.color = Color.green;
 
-        // Перебираем все позиции в поле
         for (int x = 0; x < rows; x++)
         {
             for (int y = 0; y < columns; y++)
             {
-                // Если клетка занята (не равна null)
                 if (cellGrid[x, y] != null)
                 {
-                    // Вычисляем мировую позицию клетки с учетом позиции игрового объекта
                     Vector3 cellPosition = transform.position + new Vector3(x*70, y *70, 0);
-                    // Рисуем куб, представляющий заполненную клетку (размер можно подогнать, например, чуть меньше единицы)
-                    Gizmos.DrawCube(cellPosition, Vector3.one * 60);
+                    GizmosWrapper.DrawCube(cellPosition, Vector3.one * 60);
                 }
             }
         }

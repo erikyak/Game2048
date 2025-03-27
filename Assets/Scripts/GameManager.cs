@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using TMPro;
 
@@ -14,8 +15,8 @@ public class GameManager : MonoBehaviour
     public Action<int> OnScoreChanged;
     public Action OnGameOver;
     
-    public int score;
-    private int highScore;
+    [NonSerialized] public int score;
+    [NonSerialized] public int highScore;
     private int oneMoveScore;
     
     private bool gameOver;
@@ -24,7 +25,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI MaxScoreText;
     
 
-    private void Awake()
+    public void Awake()
     {
         if (Instance == null)
             Instance = this;
@@ -48,12 +49,12 @@ public class GameManager : MonoBehaviour
             if (oneMoveScore!=0) UpdateScore(oneMoveScore);
             oneMoveScore = 0;
             gameField.CreateInRandomPosition();
-            if (IsGameOver())
-            {
-                Debug.LogWarning("Игра окончена!");
-                gameOver = true;
-                OnGameOver?.Invoke();
-            }
+        }
+        if (IsGameOver())
+        {
+            Debug.LogWarning("Игра окончена!");
+            gameOver = true;
+            OnGameOver?.Invoke();
         }
     }
 
@@ -121,18 +122,20 @@ public class GameManager : MonoBehaviour
     }
 
 
-    private void UpdateScore(int addScore)
+    public void UpdateScore(int addScore)
     {
         score += addScore;
         if(highScore < score) highScore = score;
-        currentScoreText.text = $"Score: {score.ToString()}";
-        MaxScoreText.text = $"Best: {highScore.ToString()}";
+        if(currentScoreText)
+            currentScoreText.text = $"Score: {score.ToString()}";
+        if(MaxScoreText)
+            MaxScoreText.text = $"Best: {highScore.ToString()}";
         Debug.Log("Счёт: " + score);
         SaveBestScore();
         OnScoreChanged?.Invoke(addScore);
     }
 
-    private bool IsGameOver()
+    public bool IsGameOver()
     {
         if (gameField.GetEmptyPosition().x >= 0)
             return false;
@@ -183,21 +186,33 @@ public class GameManager : MonoBehaviour
     private void SaveBestScore()
     {
         string path = Application.persistentDataPath + "/bestScore.dat";
+
+        FileStream file = File.Open(path, FileMode.OpenOrCreate);
+        
+        BinaryFormatter bf = new BinaryFormatter();
         highScore = 0;
-        if (File.Exists(path))
+        try
         {
-            BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(path, FileMode.Open);
-            highScore = (int)bf.Deserialize(file);
+            if (file.Length > 0)
+                highScore = (int)bf.Deserialize(file);
+
+            if (score > highScore)
+            {
+                highScore = score;
+                bf = new BinaryFormatter();
+                bf.Serialize(file, score);
+            }
+            
             file.Close();
         }
-        if (score > highScore)
+        catch (Exception e)
         {
-            highScore = score;
-            BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Create(path);
-            bf.Serialize(file, score);
             file.Close();
+            Debug.Log(e.Message);
+            bf = new BinaryFormatter();
+            file = File.Create(path);
+            bf.Serialize(file, score);
+            highScore = score;
         }
     }
 
@@ -232,27 +247,36 @@ public class GameManager : MonoBehaviour
     {
         string path = Application.persistentDataPath + "/savegame.dat";
         Debug.Log(path);
-        if (File.Exists(path))
+        try
         {
-            BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(path, FileMode.Open);
-            int savedScore = (int)bf.Deserialize(file);
-            List<CellData> data = (List<CellData>)bf.Deserialize(file);
-            file.Close();
-
-            ClearGameField();
-            foreach (var cellData in data)
+            if (File.Exists(path))
             {
-                Vector2Int position = new Vector2Int(cellData.positionX, cellData.positionY);
-                Cell cell = new Cell(position, cellData.value);
-                gameField.CreateCell(cell, position);
+                BinaryFormatter bf = new BinaryFormatter();
+                FileStream file = File.Open(path, FileMode.Open);
+                int savedScore = (int)bf.Deserialize(file);
+                List<CellData> data = (List<CellData>)bf.Deserialize(file);
+                file.Close();
+
+                ClearGameField();
+                foreach (var cellData in data)
+                {
+                    Vector2Int position = new Vector2Int(cellData.positionX, cellData.positionY);
+                    Cell cell = new Cell(position, cellData.value);
+                    gameField.CreateCell(cell, position);
+                }
+
+                UpdateScore(savedScore);
+
+                if (data.Count == 0) ResetGame();
             }
-            UpdateScore(savedScore);
-            
-            if(data.Count == 0) ResetGame();
+            else
+            {
+                ResetGame();
+            }
         }
-        else
+        catch (SerializationException)
         {
+            File.Delete(path);
             ResetGame();
         }
     }

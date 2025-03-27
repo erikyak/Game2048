@@ -20,9 +20,9 @@ public class RestartProcess : MonoBehaviour
 
     private void ShowGameOverScreen()
     {
+        gameObject.SetActive(true);
         Debug.Log("Game Over");
         inputHandler.Disable();
-        gameObject.SetActive(true);
         scoreText.text = $"Score: {GameManager.Instance.score}";
     }
 
